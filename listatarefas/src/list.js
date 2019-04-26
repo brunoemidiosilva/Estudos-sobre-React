@@ -1,9 +1,22 @@
-import React from "react"
+import React, {Fragment} from "react"
 
 export default (props)=>{
     return(
-        <ul>
-            <li>Qualquer Coisa</li>
-        </ul>
+        <dl>
+            <ItemsLista items={props.items}/>
+        </dl>
+    )
+}
+
+const ItemsLista = (props) => {
+    return (
+            props.items.map(item => {
+                return (
+                    <Fragment>
+                        <dt>{item.item}</dt>
+                        <dd>{item.subitem}</dd>
+                    </Fragment>
+                )
+            })
     )
 }
