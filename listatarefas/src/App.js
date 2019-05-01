@@ -6,32 +6,38 @@ import List from "./list"
 
 class App extends React.Component {
   state = {
-    itemsLista: [
-      {
-        id: 1,
-        item: 'Testando',
-        subitem: 'teu cu'
-      },
-      {
-        id: 2,
-        item: 'Testando 2'
-      },
-      {
-        id: 3,
-        item: 'Testando 3'
-      },
-      {
-        id: 4,
-        item: "nome 4"
-      }
-    ]
+    itemsLista: [],
+    valorInput: '',
   }
+
+  mudaTexto = (evento) => {
+    const valor = evento.target.value;
+    this.setState({valorInput: valor})
+  }
+
+  salvarItem = () => {    
+    const lista = this.state.itemsLista
+    
+    const novoItem = this.state.valorInput
+    const novoId = lista.length + 1
+
+    lista.unshift({
+      id: novoId,
+      item: novoItem
+    })
+
+    this.setState({
+      itemsLista: lista,
+      valorInput: ''
+     })
+  }
+
   render() {
     return (
       <div className="App">
         <div>
-          <Input value="0"/>
-          <Button label="Salvar"/>
+          <Input value={this.state.valorInput} onChange={this.mudaTexto} />
+          <Button label="Salvar" onClick={this.salvarItem}/>
       </div>
         <div>
             <List items={this.state.itemsLista}/>
