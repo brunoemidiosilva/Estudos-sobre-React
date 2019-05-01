@@ -1,9 +1,10 @@
 import React, {Fragment} from "react"
+import Button from "./button"
 
 export default (props)=>{
     return(
         <dl>
-            <ItemsLista items={props.items}/>
+            <ItemsLista items={props.items} onExcluirItem={props.onExcluirItem}/>
         </dl>
     )
 }
@@ -14,7 +15,7 @@ const ItemsLista = (props) => {
                 return (
                     <Fragment>
                         <dt>{item.item}</dt>
-                        <dd>{item.subitem}</dd>
+                        <Button label="X" onClick={() => props.onExcluirItem(item)}/>
                     </Fragment>
                 )
             })

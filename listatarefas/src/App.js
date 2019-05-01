@@ -32,6 +32,19 @@ class App extends React.Component {
      })
   }
 
+    excluirItem = (item) => {
+      const lista = this.state.itemsLista
+      const novaLista = lista.filter(itemLista => {
+        if(itemLista.id == item.id) return false
+        else return true
+      })
+
+      this.setState({
+        itemLista: novaLista
+      })
+
+    }
+
   render() {
     return (
       <div className="App">
@@ -40,7 +53,8 @@ class App extends React.Component {
           <Button label="Salvar" onClick={this.salvarItem}/>
       </div>
         <div>
-            <List items={this.state.itemsLista}/>
+            <List items={this.state.itemsLista} onExcluirItem={this.excluirItem}/>
+          
         </div>
       </div>
     );
