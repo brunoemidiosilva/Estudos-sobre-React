@@ -2,7 +2,14 @@ import React from 'react';
 import Input from "./input"
 import Button from "./button"
 import List from "./list"
+import 'antd/dist/antd.css'
+import {Layout} from 'antd'
+import {Row, Col} from'antd'
 
+
+const {
+  Header, Footer, Sider, Content,
+} = Layout;
 
 class App extends React.Component {
   state = {
@@ -48,14 +55,19 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div>
-          <Input value={this.state.valorInput} onChange={this.mudaTexto} />
-          <Button label="Salvar" onClick={this.salvarItem}/>
-      </div>
-        <div>
-            <List items={this.state.itemsLista} onExcluirItem={this.excluirItem}/>
-          
-        </div>
+      <Layout>
+      <Header>Header</Header>
+      <Content>
+           <Row type='flex' justify='center' align='middle'>
+             <Col span={3}><Input value={this.state.valorInput} onChange={this.mudaTexto} /></Col>
+             <Col span={3}><Button label="Salvar" onClick={this.salvarItem}/></Col>
+            </Row>
+            <Row type='flex' justify='center' align='middle'>
+              <Col span={3}><List items={this.state.itemsLista} onExcluirItem={this.excluirItem}/></Col>
+            </Row>
+      </Content>
+      <Footer>Footer</Footer>
+    </Layout>
       </div>
     );
   }

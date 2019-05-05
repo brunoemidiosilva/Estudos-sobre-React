@@ -1,7 +1,8 @@
-import React from "react"
+import React from "react";
+import {Button} from 'antd';
 
 export default (props)=>{
     return(
-    <button onClick={props.onClick}>{props.label}</button>
+    <Button onClick={props.onClick}>{props.label}</Button>
     )
 }

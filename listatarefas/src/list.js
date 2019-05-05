@@ -13,10 +13,10 @@ const ItemsLista = (props) => {
     return (
             props.items.map(item => {
                 return (
-                    <Fragment>
-                        <dt>{item.item}</dt>
+                    <dt>
+                        <span>{item.item}</span>
                         <Button label="X" onClick={() => props.onExcluirItem(item)}/>
-                    </Fragment>
+                    </dt>
                 )
             })
     )
